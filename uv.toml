@@ -1,3 +1,0 @@
-# uv project config: keep build/download cache on D drive, off C drive.
-# (The path contains non-ASCII characters, which uv handles correctly.)
-cache-dir = "D:/py项目uv环境/.uv-cache"

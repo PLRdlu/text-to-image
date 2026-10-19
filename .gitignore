@@ -16,6 +16,10 @@ dist/
 .env.*
 !.env.example
 
+# ---- 本机专属配置（含绝对路径，不入库） ----
+uv.toml
+.uv-cache/
+
 # ---- 生成产物 ----
 output/*
 !output/.gitkeep

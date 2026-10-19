@@ -18,7 +18,7 @@
 ```
 text2image/
 ├── pyproject.toml          # 依赖与工具配置（uv 管理）
-├── uv.toml                 # 把 uv 缓存固定到 D 盘
+├── uv.toml                 # 本机专属：把 uv 缓存固定到 D 盘（已 gitignore）
 ├── .env.example            # 环境变量模板
 ├── text2image/
 │   ├── config.py           # 集中配置（pydantic-settings）
@@ -170,6 +170,8 @@ uv run ruff check .    # 代码检查
 uv run ruff format .   # 格式化
 uv run mypy text2image # 类型检查
 ```
+
+推送到 GitHub 后，Actions 会自动执行同样的 lint / 类型检查 / 测试（见 `.github/workflows/ci.yml`）。
 
 ## 注意事项
 
