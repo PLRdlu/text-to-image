@@ -1,0 +1,55 @@
+[project]
+name = "text2image"
+version = "0.1.0"
+description = "通义万相文生图服务：FastAPI 后端 + DeepSeek 提示词改写与质检"
+requires-python = ">=3.11"
+dependencies = [
+    # ---- 阿里云百炼 / 通义万相 ----
+    "dashscope>=1.20",          # 官方 SDK：文生图 wan2.6-t2i / 多模态 qwen3.8-max
+    # ---- HTTP 与异步 ----
+    "httpx>=0.27",              # 异步 HTTP：调 DeepSeek、下载生成图
+    "aiofiles>=24.1",           # 异步文件读写
+    "tenacity>=9.0",            # 轮询/网络重试
+    # ---- 数据与配置 ----
+    "pydantic>=2.9",            # 数据模型与校验
+    "pydantic-settings>=2.5",   # 从环境变量/.env 读配置
+    "pyyaml>=6.0",              # 读取 configs/ 与风格预设
+    # ---- 图像处理 ----
+    "pillow>=11.0",             # 图片尺寸校验、格式转换、水印
+    # ---- Web 服务 ----
+    "fastapi>=0.115",           # HTTP API
+    "uvicorn[standard]>=0.32",  # ASGI 服务器
+    "python-multipart>=0.0.12", # 表单/文件上传
+    # ---- LLM 客户端（DeepSeek OpenAI 兼容） ----
+    "openai>=1.50",
+    # ---- CLI 与日志 ----
+    "typer>=0.12",
+    "rich>=13.7",
+    "loguru>=0.7",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3",
+    "pytest-asyncio>=0.24",
+    "respx>=0.21",              # 打桩 httpx，测试不真调 API
+    "ruff>=0.6",
+    "mypy>=1.11",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.mypy]
+python_version = "3.11"
+ignore_missing_imports = true

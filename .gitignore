@@ -1,0 +1,29 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+build/
+dist/
+
+# ---- 虚拟环境 ----
+.venv/
+
+# ---- 机密（绝不入库） ----
+.env
+.env.*
+!.env.example
+
+# ---- 生成产物 ----
+output/*
+!output/.gitkeep
+logs/*
+!logs/.gitkeep
+
+# ---- 编辑器/系统 ----
+.idea/
+.vscode/
+Thumbs.db
+desktop.ini
